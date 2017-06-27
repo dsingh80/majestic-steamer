@@ -1,4 +1,3 @@
-
 var navItems = document.querySelectorAll('.navlist a');
 var navselector = document.querySelector('.navbar #navselector');
 function isElementVisible(elem) {
@@ -158,27 +157,4 @@ function addListeners() {
 	window.requestAnimationFrame(updateNavselector);
 	navselector.classList.add('active');
 };
-
-function sendMail(email){
-	
-}
-
-function handleForm(ev){
-	ev.preventDefault();
-	const form = ev.currentTarget;
-
-	const MessageInfo = {
-		name: form.name.value,
-		email: form.email.value,
-		message: form.querySelector('textarea').value,
-	}
-
-	let emailString = "mailto:majesticsteamers@gmail.com"
-	emailString += `?subject=Contact%20Request%20from%20${MessageInfo.name.split("%20")}`
-	emailString += `&bcc=${MessageInfo.email}`
-	emailString += `&body=${MessageInfo.message.split("$20")}`
-	window.location.href = emailString//`mailto:majesticsteamer@gmail.com?subject=Contact%20Request%20from%20${MessageInfo.name.split("%20")}&bcc=${MessageInfo.email}&body=${MessageInfo.message.split("$20")}`
-
-	form.reset();
-}
 
