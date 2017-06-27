@@ -1,10 +1,14 @@
 var navItems = document.querySelectorAll('.navlist a');
 var navselector = document.querySelector('.navbar #navselector');
-function isElementVisible(elem) {
+function isElementVisible(elem, strict) {
     var elemTop = elem.getBoundingClientRect().top;
     var elemBottom = elem.getBoundingClientRect().bottom;
 
-    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+	if(strict)
+    	var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+	else
+		var isVisible = (elemTop >=0);
+		
     return isVisible;
 }
 
@@ -22,29 +26,6 @@ window.onresize = function(){
     console.log("GO MOBILE!");
 };
 
-
-
-
-/* NAVBAR CONTROLS */
-var nav_inactive = false;
-window.addEventListener('scroll', function(e){
-	// NAVBAR STUFF
-
-	// Check for navbar transparency
-    if(window.pageYOffset > 100){
-        if(nav_inactive==true)
-            return;
-        document.querySelector('.navbar').classList.add('inactive');
-        nav_inactive = true;
-    }
-    else{
-        if(nav_inactive==false)
-            return;
-        document.querySelector('.navbar').classList.remove('inactive');
-        nav_inactive = false;
-    }
-});
-
 window.addEventListener('scroll', function(ev){
 
 	if(isElementVisible(document.querySelector('.services'))){
@@ -56,7 +37,6 @@ window.addEventListener('scroll', function(ev){
 
 	ev.target.removeEventListener(ev.type, arguments.callee);
 });
-
 
 
 
@@ -105,6 +85,34 @@ function SmoothScrollTo(targetY, duration) {
 	
 }
 
+
+
+
+/* NAVBAR CONTROLS */
+var nav_inactive = false;
+window.addEventListener('scroll', function(e){
+	// NAVBAR STUFF
+
+	// Check for navbar transparency
+    // if(window.pageYOffset > 100){
+    //     if(nav_inactive==true)
+    //         return;
+    //     document.querySelector('.navbar').classList.add('inactive');
+    //     nav_inactive = true;
+    // }
+    // else{
+    //     if(nav_inactive==false)
+    //         return;
+    //     document.querySelector('.navbar').classList.remove('inactive');
+    //     nav_inactive = false;
+    // }
+});
+
+
+
+
+
+
 function updateNavBar() {
 	if(this.firstChild == currentSelection)
 		return;
@@ -151,10 +159,8 @@ function addListeners() {
 	currentSelection = navItems[0].firstChild;
 
 	navItems.forEach(navItem => navItem.addEventListener('click', updateNavBar));
-	document.querySelector('#contactForm').addEventListener('submit', handleForm);
 
-	setInterval(verifyNavBarSelection, 400);
-	window.requestAnimationFrame(updateNavselector);
-	navselector.classList.add('active');
+	//setInterval(verifyNavBarSelection, 400);
+	//window.requestAnimationFrame(updateNavselector);
+	//navselector.classList.add('active');
 };
-
