@@ -90,7 +90,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <a><li>Contact</li></a>
             <!--<a><li>Deals</li></a> !-->
         </ul>
-        <div id="contactInfo">Call Now!<br/>(317)702-5236</div>
+        <div id="contactInfo">Call Now!<br/>(317)702-5326</div>
     </div>
 
     <div class="slideshow">
